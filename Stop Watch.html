@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin:0;
+    }
+    .mainn{
+        background-image: url("https://images.unsplash.com/photo-1508962914676-134849a727f0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3RvcCUyMHdhdGNofGVufDB8fDB8fHww");
+        background-size: 100% 100%;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .second{
+        height: 32vh;
+        width: auto;
+        border-radius: 100%;
+        background-image: radial-gradient(rgba(204, 204, 204, 0.7),rgba(5, 5, 5, 0.8));
+        border: 10px solid black;
+    }
+  
+  #display{
+    margin-top: -120px;
+    margin-left: 45px;
+  }
+
+button{
+    border: none;
+    height: 35px;
+    width: 65px;
+    border-radius: 10px;
+transition: 1s;   
+font-weight: bold;
+    margin-top: 100px;
+    color: rgb(8, 8, 8);
+    background-image: radial-gradient(rgba(204, 204, 204, 0.7),rgba(5, 5, 5, 0.8));
+        border: 1px solid black;
+}
+button:hover{
+    background-image: radial-gradient(rgba(122, 109, 109, 0.7),rgba(218, 189, 189, 0.8));
+cursor: pointer;
+transition: 1s;   
+}
+</style>
+<body>
+    <div class="mainn">
+        <div class="second">
+        <img src="./th.png" alt="">
+    <h1 id="display">00:00:00</h1>
+    <button id="start" onclick="handleStart()">Start</button>
+    <button id="stop" onclick="handleStop()">Stop</button>
+    <button id="reset" onclick="handleReset()">Reset</button>
+    </div></div>
+    
+</body>
+<script>
+let x=0;
+let hour=0;
+let min=0;
+let sec=0;
+let myinterval=null;
+
+
+function timer(){
+    x++
+    if(x>100){
+        x=0;
+        sec++
+    }
+    if(sec>60){
+        sec=0;
+        min++
+    }  
+    if(min>60){
+        min=0;
+        hour++
+    }
+    display.innerText=`${hour}:${min}:${sec}:${x}`
+}
+    let handleStart=()=>{
+        myinterval=setInterval(timer,10)
+
+    }
+    let handleStop=()=>{
+        clearInterval(myinterval)
+    } 
+    let handleReset=()=>{
+        x=0;
+         hour=0;
+        min=0;
+         sec=0;
+        display.innerText=`00:00:00`
+    }
+</script>
+</html>
+
+
+
+
